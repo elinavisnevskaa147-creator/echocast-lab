@@ -1,0 +1,444 @@
+@import 'variables';
+
+// --- 1. Глобальный сброс ---
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-main;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $color-dark;
+  background-color: $color-bg;
+  padding-bottom: 80px; // Отступ снизу под фиксированный плеер
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-primary-hover;
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+// --- 2. Шапка ---
+.header {
+  background-color: $color-white;
+  border-bottom: 1px solid $color-border;
+  padding: $spacing-md;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    margin: 0 0 $spacing-xs 0;
+    font-size: 28px;
+    color: $color-primary;
+  }
+
+  &__subtitle {
+    color: $color-gray;
+    margin: 0 0 $spacing-sm 0;
+    font-size: 14px;
+  }
+}
+
+.nav {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap; // Держим меню в одну строку
+  }
+
+  &__item {
+    display: inline-block; // Выстраиваем элементы в ряд
+    margin-right: $spacing-md;
+    margin-bottom: 0;
+  }
+
+  &__link {
+    font-weight: bold;
+    display: inline-block;
+
+    &_active {
+      color: $color-dark;
+      text-decoration: underline;
+    }
+  }
+}
+
+// --- 3. Общие секции и текст ---
+.main {
+  max-width: 1000px; // Ограничиваем ширину контента
+  margin: 0 auto;
+  padding: $spacing-lg $spacing-md;
+
+  &__title {
+    margin-top: 0;
+    font-size: 32px;
+    border-bottom: 2px solid $color-primary;
+    padding-bottom: $spacing-sm;
+    margin-bottom: $spacing-md;
+  }
+
+  &__desc {
+    color: $color-gray;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.section {
+  margin-bottom: $spacing-xl;
+
+  &__title {
+    font-size: 24px;
+    color: $color-dark;
+    border-bottom: 1px solid $color-border;
+    padding-bottom: $spacing-sm;
+    margin-bottom: $spacing-md;
+  }
+
+  &__text {
+    margin-bottom: $spacing-sm;
+    line-height: $line-height-base;
+  }
+}
+
+.list {
+  padding-left: $spacing-lg;
+  margin-bottom: $spacing-md;
+
+  &__item {
+    margin-bottom: $spacing-xs;
+  }
+}
+
+// --- 4. Кнопки ---
+.btn {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  background-color: $color-primary;
+  color: $color-white;
+  border-radius: 4px;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    background-color: $color-primary-hover;
+    color: $color-white;
+    transform: translateY(-2px);
+  }
+
+  &_secondary {
+    background-color: $color-white;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+
+    &:hover {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+}
+
+// --- 5. Каталог и карточки ---
+.catalog {
+  &__title {
+    font-size: 24px;
+    margin-top: $spacing-lg;
+    margin-bottom: $spacing-md;
+    color: $color-primary;
+  }
+}
+
+.card {
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  margin-bottom: $spacing-lg; // Чуть больше отступа между карточками
+  overflow: hidden;
+
+  // ОГРАНИЧЕНИЕ ШИРИНЫ КАРТОЧЕК И ЦЕНТРИРОВАНИЕ:
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &__image-wrapper {
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: 300px; // Сделал повыше для красивых пропорций
+  }
+
+  &__badge {
+    position: absolute;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    background-color: $color-badge;
+    color: $color-white;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  &__content {
+    padding: $spacing-md $spacing-lg; // Чуть больше отступы внутри
+  }
+
+  &__title {
+    margin: 0 0 $spacing-sm 0;
+    font-size: 24px; // Чуть крупнее заголовок
+  }
+
+  &__desc {
+    color: $color-gray;
+    margin-bottom: $spacing-sm;
+    font-size: 16px;
+  }
+
+  &__meta {
+    font-size: 14px;
+    color: $color-primary;
+    font-weight: bold;
+    margin-bottom: $spacing-md;
+  }
+
+  &__link {
+    display: inline-block;
+    padding: $spacing-sm $spacing-md;
+    background-color: $color-primary;
+    color: $color-white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background-color: $color-primary-hover;
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// --- 6. Детальная страница ---
+.detail {
+  background-color: $color-white;
+  padding: $spacing-lg;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+
+  // ОГРАНИЧЕНИЕ ШИРИНЫ И ЦЕНТРИРОВАНИЕ:
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &__title {
+    margin-top: 0;
+    color: $color-primary;
+  }
+
+  &__image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__section {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__subtitle {
+    border-bottom: 1px solid $color-border;
+    padding-bottom: $spacing-xs;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+// --- 7. Таблицы ---
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $spacing-lg;
+  background-color: $color-white;
+
+  // Ограничиваем ширину таблиц (особенно для collection.html)
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &__caption {
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: $spacing-sm;
+  }
+
+  & th, & td {
+    padding: $spacing-sm;
+    border: 1px solid $color-border;
+    text-align: left;
+  }
+
+  & th {
+    background-color: $color-bg;
+    font-weight: bold;
+  }
+}
+
+// --- 8. Формы ---
+.form {
+  background-color: $color-white;
+  padding: $spacing-lg;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+
+  // ОГРАНИЧЕНИЕ ШИРИНЫ И ЦЕНТРИРОВАНИЕ ФОРМЫ:
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &__section {
+    margin-bottom: $spacing-lg;
+    border-bottom: 1px solid $color-border;
+    padding-bottom: $spacing-md;
+  }
+
+  &__section-title {
+    font-size: 20px;
+    color: $color-primary;
+    margin-bottom: $spacing-md;
+  }
+
+  &__desc {
+    color: $color-gray;
+    font-size: 14px;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__group {
+    margin-bottom: $spacing-md;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-weight: bold;
+
+    &_inline {
+      display: inline;
+      font-weight: normal;
+      margin-left: $spacing-sm;
+      margin-bottom: 0;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: $spacing-sm;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:focus-visible {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.2);
+    }
+  }
+
+  &__submit {
+    padding: $spacing-md $spacing-lg;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $color-primary-hover;
+    }
+  }
+}
+
+// --- 9. Подвал ---
+.footer {
+  background-color: $color-white;
+  border-top: 1px solid $color-border;
+  padding: $spacing-md;
+  text-align: center;
+
+  &__text {
+    margin: $spacing-xs 0;
+    color: $color-gray;
+    font-size: 14px;
+  }
+
+  &__link {
+    color: $color-primary;
+  }
+}
+
+// --- 10. Мини-плеер ---
+.mini-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: $color-dark;
+  color: $color-white;
+  padding: $spacing-md;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+  &__info {
+    display: inline-block;
+    width: 80%;
+    vertical-align: middle;
+  }
+
+  &__title {
+    font-size: 14px;
+  }
+
+  &__btn {
+    display: inline-block;
+    width: 18%;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    padding: $spacing-sm;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    vertical-align: middle;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $color-primary-hover;
+    }
+  }
+}
