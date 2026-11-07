@@ -4,62 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>«Пирокинезис: рэп-разбор» — EchoCast</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>EchoCast</h1>
-        <p>Каталог подкастов обо всём, что звучит в вашей голове</p>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="catalog.html">Каталог</a></li>
-                <li><a href="detail.html">О подкасте</a></li>
-                <li><a href="collection.html">Очередь прослушивания</a></li>
-                <li><a href="checkout.html">Купить подписку</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__logo">EchoCast</h1>
+            <p class="header__subtitle">Каталог подкастов обо всём, что звучит в вашей голове</p>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="catalog.html" class="nav__link">Каталог</a></li>
+                    <li class="nav__item"><a href="detail.html" class="nav__link nav__link_active">О подкасте</a></li>
+                    <li class="nav__item"><a href="collection.html" class="nav__link">Очередь прослушивания</a></li>
+                    <li class="nav__item"><a href="checkout.html" class="nav__link">Купить подписку</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <article>
-            <h2>«Пирокинезис: рэп-разбор»</h2>
+    <main class="main">
+        <article class="detail">
+            <h2 class="detail__title">«Пирокинезис: рэп-разбор»</h2>
 
-            <img src="img/pyro.jpg"
-                 alt="Иллюстрация к подкасту «Пирокинезис: рэп-разбор»: портрет музыканта с микрофоном на сцене"
-                 width="400">
+            <img src="img/pyro.jpg" alt="Иллюстрация к подкасту «Пирокинезис: рэп-разбор»" class="detail__image">
 
-            <section>
-                <h3>Описание</h3>
-                <p>Подкаст, в котором ведущие разбирают творчество музыканта
-                   Пирокинезиса в контексте рэпа. Обсуждаем биты, тексты, флоу,
-                   влияние классиков жанра, эволюцию звучания от первых треков
-                   до последних альбомов, а также концертные выступления
-                   и необычные музыкальные решения.</p>
+            <section class="detail__section">
+                <h3 class="detail__subtitle">Описание</h3>
+                <p class="section__text">Подкаст, в котором ведущие разбирают творчество музыканта Пирокинезиса в контексте рэпа. Обсуждаем биты, тексты, флоу, влияние классиков жанра, эволюцию звучания от первых треков до последних альбомов, а также концертные выступления и необычные музыкальные решения.</p>
             </section>
 
-            <section>
-                <h3>Ведущие</h3>
-                <ul>
-                    <li>Артём Волков — музыкальный журналист</li>
-                    <li>Ксения Огнева — звукорежиссёр и фанат рэпа</li>
+            <section class="detail__section">
+                <h3 class="detail__subtitle">Ведущие</h3>
+                <ul class="list">
+                    <li class="list__item">Артём Волков — музыкальный журналист</li>
+                    <li class="list__item">Ксения Огнева — звукорежиссёр и фанат рэпа</li>
                 </ul>
             </section>
 
-            <section>
-                <h3>Характеристики</h3>
-                <ul>
-                    <li>Всего эпизодов: 46</li>
-                    <li>Средняя длительность: 44 минуты</li>
-                    <li>Периодичность: раз в неделю</li>
-                    <li>Язык: русский</li>
-                    <li>Жанр: музыка, разбор творчества</li>
+            <section class="detail__section">
+                <h3 class="detail__subtitle">Характеристики</h3>
+                <ul class="list">
+                    <li class="list__item">Всего эпизодов: 46</li>
+                    <li class="list__item">Средняя длительность: 44 минуты</li>
+                    <li class="list__item">Периодичность: раз в неделю</li>
+                    <li class="list__item">Язык: русский</li>
+                    <li class="list__item">Жанр: музыка, разбор творчества</li>
                 </ul>
             </section>
 
-            <section>
-                <h3>Последние эпизоды</h3>
-                <table>
+            <section class="detail__section">
+                <h3 class="detail__subtitle">Последние эпизоды</h3>
+                <table class="table">
                     <thead>
                         <tr>
                             <th>№</th>
@@ -91,14 +88,23 @@
                 </table>
             </section>
 
-            <p><a href="collection.html">Добавить эпизоды в очередь прослушивания</a></p>
+            <p class="section__text">
+                <a href="collection.html" class="btn">Добавить эпизоды в очередь прослушивания</a>
+            </p>
         </article>
     </main>
 
-    <footer>
-        <p>&copy; 2024 EchoCast. Все права защищены.</p>
-        <p>Связь: <a href="mailto:hello@echocast.example">hello@echocast.example</a></p>
+    <footer class="footer">
+        <p class="footer__text">&copy; 2024 EchoCast. Все права защищены.</p>
+        <p class="footer__text">Связь: <a href="mailto:hello@echocast.example" class="footer__link">hello@echocast.example</a></p>
     </footer>
+
+    <div class="mini-player">
+        <div class="mini-player__info">
+            <span class="mini-player__title">Сейчас играет: Пирокинезис — Рэп-разбор</span>
+        </div>
+        <button class="mini-player__btn">▶</button>
+    </div>
 
 </body>
 </html>

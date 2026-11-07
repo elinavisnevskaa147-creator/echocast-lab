@@ -4,53 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EchoCast — Каталог подкастов</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>EchoCast</h1>
-        <p>Каталог подкастов обо всём, что звучит в вашей голове</p>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="catalog.html">Каталог</a></li>
-                <li><a href="detail.html">О подкасте</a></li>
-                <li><a href="collection.html">Очередь прослушивания</a></li>
-                <li><a href="checkout.html">Купить подпискуs</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__logo">EchoCast</h1>
+            <p class="header__subtitle">Каталог подкастов обо всём, что звучит в вашей голове</p>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link nav__link_active">Главная</a></li>
+                    <li class="nav__item"><a href="catalog.html" class="nav__link">Каталог</a></li>
+                    <li class="nav__item"><a href="detail.html" class="nav__link">О подкасте</a></li>
+                    <li class="nav__item"><a href="collection.html" class="nav__link">Очередь прослушивания</a></li>
+                    <li class="nav__item"><a href="checkout.html" class="nav__link">Купить подписку</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section>
-            <h2>О сервисе</h2>
-            <p>EchoCast — это платформа для поиска и прослушивания подкастов.
-               Мы собираем шоу от независимых авторов и небольших студий —
-               на самые разные темы и под любое настроение. Слушайте,
-               собирайте очередь и получайте персональные дайджесты.</p>
+    <main class="main">
+        <section class="section">
+            <h2 class="section__title">О сервисе</h2>
+            <p class="section__text">EchoCast — это платформа для поиска и прослушивания подкастов. Мы собираем шоу от независимых авторов и небольших студий — на самые разные темы и под любое настроение. Слушайте, собирайте очередь и получайте персональные дайджесты.</p>
         </section>
 
-        <section>
-            <h2>Что вас ждёт</h2>
-            <ul>
-                <li>Подкасты на любой вкус и формат</li>
-                <li>Удобная очередь прослушивания</li>
-                <li>Персональные дайджесты по интересам</li>
-                <li>Синхронизация между устройствами</li>
+        <section class="section">
+            <h2 class="section__title">Что вас ждёт</h2>
+            <ul class="list">
+                <li class="list__item">Подкасты на любой вкус и формат</li>
+                <li class="list__item">Удобная очередь прослушивания</li>
+                <li class="list__item">Персональные дайджесты по интересам</li>
+                <li class="list__item">Синхронизация между устройствами</li>
             </ul>
         </section>
 
-        <section>
-            <h2>С чего начать</h2>
-            <p><a href="catalog.html">Открыть каталог подкастов</a></p>
-            <p><a href="checkout.html">Оформить подписку на дайджест</a></p>
+        <section class="section">
+            <h2 class="section__title">С чего начать</h2>
+            <p class="section__text">
+                <a href="catalog.html" class="btn">Открыть каталог подкастов</a>
+            </p>
+            <p class="section__text">
+                <a href="checkout.html" class="btn btn_secondary">Оформить подписку на дайджест</a>
+            </p>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 EchoCast. Все права защищены.</p>
-        <p>Связь: <a href="mailto:hello@echocast.example">hello@echocast.example</a></p>
+    <footer class="footer">
+        <p class="footer__text">&copy; 2024 EchoCast. Все права защищены.</p>
+        <p class="footer__text">Связь: <a href="mailto:hello@echocast.example" class="footer__link">hello@echocast.example</a></p>
     </footer>
+
+    <div class="mini-player">
+        <div class="mini-player__info">
+            <span class="mini-player__title">Сейчас играет: Пирокинезис — Рэп-разбор</span>
+        </div>
+        <button class="mini-player__btn">▶</button>
+    </div>
 
 </body>
 </html>

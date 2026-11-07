@@ -4,134 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Купить подписку — EchoCast</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>EchoCast</h1>
-        <p>Каталог подкастов обо всём, что звучит в вашей голове</p>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="catalog.html">Каталог</a></li>
-                <li><a href="detail.html">О подкасте</a></li>
-                <li><a href="collection.html">Очередь прослушивания</a></li>
-                <li><a href="checkout.html">Купить подписку</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__logo">EchoCast</h1>
+            <p class="header__subtitle">Каталог подкастов обо всём, что звучит в вашей голове</p>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="catalog.html" class="nav__link">Каталог</a></li>
+                    <li class="nav__item"><a href="detail.html" class="nav__link">О подкасте</a></li>
+                    <li class="nav__item"><a href="collection.html" class="nav__link">Очередь прослушивания</a></li>
+                    <li class="nav__item"><a href="checkout.html" class="nav__link nav__link_active">Купить подписку</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <h2>Подписка на дайджест</h2>
-        <p>Получайте подборку новых эпизодов по вашим интересам.</p>
+    <main class="main">
+        <h2 class="main__title">Купить подписку</h2>
+        <p class="main__desc">Получайте подборку новых эпизодов по вашим интересам.</p>
 
-        <form action="/subscribe" method="POST">
+        <form action="/subscribe" method="POST" class="form">
+            <section class="form__section">
+                <h3 class="form__section-title">Контактные данные</h3>
 
-            <section>
-                <h3>Контактные данные</h3>
+                <div class="form__group">
+                    <label for="subscriber-name" class="form__label">Ваше имя:</label>
+                    <input type="text" id="subscriber-name" name="subscriber_name" class="form__input" required minlength="2" maxlength="50" placeholder="Анна">
+                </div>
 
-                <p>
-                    <label for="subscriber-name">Ваше имя:</label><br>
-                    <input type="text" id="subscriber-name" name="subscriber_name"
-                           required minlength="2" maxlength="50"
-                           placeholder="Анна">
-                </p>
+                <div class="form__group">
+                    <label for="email" class="form__label">Email для получения дайджеста:</label>
+                    <input type="email" id="email" name="email" class="form__input" required placeholder="you@example.com">
+                </div>
 
-                <p>
-                    <label for="email">Email для получения дайджеста:</label><br>
-                    <input type="email" id="email" name="email"
-                           required placeholder="you@example.com">
-                </p>
-
-                <p>
-                    <label for="start-date">С какой даты начать подписку:</label><br>
-                    <input type="date" id="start-date" name="start_date"
-                           required min="2024-01-01">
-                </p>
+                <div class="form__group">
+                    <label for="start-date" class="form__label">С какой даты начать подписку:</label>
+                    <input type="date" id="start-date" name="start_date" class="form__input" required min="2024-01-01">
+                </div>
             </section>
 
-            <section>
-                <h3>Частота получения дайджеста</h3>
+            <section class="form__section">
+                <h3 class="form__section-title">Частота получения дайджеста</h3>
 
-                <p>
+                <div class="form__group">
                     <input type="radio" id="freq-daily" name="frequency" value="daily" checked>
-                    <label for="freq-daily">Ежедневно</label>
-                </p>
+                    <label for="freq-daily" class="form__label form__label_inline">Ежедневно</label>
+                </div>
 
-                <p>
+                <div class="form__group">
                     <input type="radio" id="freq-weekly" name="frequency" value="weekly">
-                    <label for="freq-weekly">Раз в неделю</label>
-                </p>
+                    <label for="freq-weekly" class="form__label form__label_inline">Раз в неделю</label>
+                </div>
             </section>
 
-            <section>
-                <h3>Категории интересов</h3>
-                <p>Отметьте все, что вам интересно:</p>
+            <section class="form__section">
+                <h3 class="form__section-title">Категории интересов</h3>
+                <p class="form__desc">Отметьте все, что вам интересно:</p>
 
-                <p>
+                <div class="form__group">
                     <input type="checkbox" id="cat-admission" name="categories" value="admission">
-                    <label for="cat-admission">Поступление и учёба</label>
-                </p>
+                    <label for="cat-admission" class="form__label form__label_inline">Поступление и учёба</label>
+                </div>
 
-                <p>
+                <div class="form__group">
                     <input type="checkbox" id="cat-cats" name="categories" value="cats">
-                    <label for="cat-cats">Котики и питомцы</label>
-                </p>
+                    <label for="cat-cats" class="form__label form__label_inline">Котики и питомцы</label>
+                </div>
 
-                <p>
+                <div class="form__group">
                     <input type="checkbox" id="cat-sky" name="categories" value="sky">
-                    <label for="cat-sky">Рассветы и закаты</label>
-                </p>
+                    <label for="cat-sky" class="form__label form__label_inline">Рассветы и закаты</label>
+                </div>
 
-                <p>
+                <div class="form__group">
                     <input type="checkbox" id="cat-groceries" name="categories" value="groceries">
-                    <label for="cat-groceries">Закупки в магазине</label>
-                </p>
+                    <label for="cat-groceries" class="form__label form__label_inline">Закупки в магазине</label>
+                </div>
 
-                <p>
+                <div class="form__group">
                     <input type="checkbox" id="cat-pyro" name="categories" value="pyro">
-                    <label for="cat-pyro">Разбор творчества Пирокинезиса</label>
-                </p>
+                    <label for="cat-pyro" class="form__label form__label_inline">Разбор творчества Пирокинезиса</label>
+                </div>
 
-                <p>
+                <div class="form__group">
                     <input type="checkbox" id="cat-tiktok" name="categories" value="tiktok">
-                    <label for="cat-tiktok">TikTok и алгоритмы</label>
-                </p>
+                    <label for="cat-tiktok" class="form__label form__label_inline">TikTok и алгоритмы</label>
+                </div>
             </section>
 
-            <section>
-                <h3>Дополнительно</h3>
+            <section class="form__section">
+                <h3 class="form__section-title">Дополнительно</h3>
 
-                <p>
-                    <label for="digest-size">Максимум эпизодов в дайджесте:</label><br>
-                    <input type="number" id="digest-size" name="digest_size"
-                           min="1" max="20" value="5" required>
-                </p>
+                <div class="form__group">
+                    <label for="digest-size" class="form__label">Максимум эпизодов в дайджесте:</label>
+                    <input type="number" id="digest-size" name="digest_size" class="form__input" min="1" max="20" value="5" required>
+                </div>
 
-                <p>
-                    <label for="comment">Комментарий:</label><br>
-                    <textarea id="comment" name="comment" rows="4" cols="40"
-                              maxlength="500"
-                              placeholder="Например: хочу больше эпизодов про котиков"></textarea>
-                </p>
+                <div class="form__group">
+                    <label for="comment" class="form__label">Комментарий:</label>
+                    <textarea id="comment" name="comment" class="form__input" rows="4" maxlength="500" placeholder="Например: хочу больше эпизодов про котиков и Пирокинезиса"></textarea>
+                </div>
 
-                <p>
+                <div class="form__group">
                     <input type="checkbox" id="agreement" name="agreement" required>
-                    <label for="agreement">Я согласен с обработкой персональных данных и получением писем</label>
-                </p>
+                    <label for="agreement" class="form__label form__label_inline">Я согласен с обработкой персональных данных и получением писем</label>
+                </div>
             </section>
 
-            <p>
-                <button type="submit">Подписаться на дайджест</button>
-            </p>
-
+            <button type="submit" class="form__submit">Купить подписку</button>
         </form>
     </main>
 
-    <footer>
-        <p>&copy; 2024 EchoCast. Все права защищены.</p>
-        <p>Связь: <a href="mailto:hello@echocast.example">hello@echocast.example</a></p>
+    <footer class="footer">
+        <p class="footer__text">&copy; 2024 EchoCast. Все права защищены.</p>
+        <p class="footer__text">Связь: <a href="mailto:hello@echocast.example" class="footer__link">hello@echocast.example</a></p>
     </footer>
+
+    <div class="mini-player">
+        <div class="mini-player__info">
+            <span class="mini-player__title">Сейчас играет: Пирокинезис — Рэп-разбор</span>
+        </div>
+        <button class="mini-player__btn">▶</button>
+    </div>
 
 </body>
 </html>
