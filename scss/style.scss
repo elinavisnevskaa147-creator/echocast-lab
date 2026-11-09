@@ -1,6 +1,6 @@
 @import 'variables';
 
-// --- 1. Глобальный сброс ---
+//1. Глобальный сброс
 * {
   box-sizing: border-box;
 }
@@ -13,7 +13,6 @@ body {
   line-height: $line-height-base;
   color: $color-dark;
   background-color: $color-bg;
-  padding-bottom: 80px; // Отступ снизу под фиксированный плеер
 }
 
 a {
@@ -24,6 +23,11 @@ a {
   &:hover {
     color: $color-primary-hover;
   }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
 }
 
 img {
@@ -32,7 +36,16 @@ img {
   object-fit: cover;
 }
 
-// --- 2. Шапка ---
+//2. Макросетка (CSS Grid)
+.page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+//3. Шапка и Flexbox меню
 .header {
   background-color: $color-white;
   border-bottom: 1px solid $color-border;
@@ -41,17 +54,20 @@ img {
   &__container {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
   }
 
   &__logo {
-    margin: 0 0 $spacing-xs 0;
+    margin: 0;
     font-size: 28px;
     color: $color-primary;
   }
 
   &__subtitle {
     color: $color-gray;
-    margin: 0 0 $spacing-sm 0;
+    margin: 0;
     font-size: 14px;
   }
 }
@@ -61,18 +77,19 @@ img {
     list-style: none;
     padding: 0;
     margin: 0;
-    white-space: nowrap; // Держим меню в одну строку
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
   }
 
   &__item {
-    display: inline-block; // Выстраиваем элементы в ряд
-    margin-right: $spacing-md;
-    margin-bottom: 0;
+    margin: 0;
   }
 
   &__link {
     font-weight: bold;
     display: inline-block;
+    padding: $spacing-xs 0;
 
     &_active {
       color: $color-dark;
@@ -81,15 +98,16 @@ img {
   }
 }
 
-// --- 3. Общие секции и текст ---
+//4. Основной контент
 .main {
-  max-width: 1000px; // Ограничиваем ширину контента
+  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
   padding: $spacing-lg $spacing-md;
 
   &__title {
     margin-top: 0;
-    font-size: 32px;
+    font-size: 28px;
     border-bottom: 2px solid $color-primary;
     padding-bottom: $spacing-sm;
     margin-bottom: $spacing-md;
@@ -105,7 +123,7 @@ img {
   margin-bottom: $spacing-xl;
 
   &__title {
-    font-size: 24px;
+    font-size: 22px;
     color: $color-dark;
     border-bottom: 1px solid $color-border;
     padding-bottom: $spacing-sm;
@@ -115,6 +133,12 @@ img {
   &__text {
     margin-bottom: $spacing-sm;
     line-height: $line-height-base;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
   }
 }
 
@@ -127,7 +151,7 @@ img {
   }
 }
 
-// --- 4. Кнопки ---
+//5. Кнопки
 .btn {
   display: inline-block;
   padding: $spacing-sm $spacing-lg;
@@ -143,6 +167,11 @@ img {
     transform: translateY(-2px);
   }
 
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
   &_secondary {
     background-color: $color-white;
     color: $color-primary;
@@ -155,13 +184,19 @@ img {
   }
 }
 
-// --- 5. Каталог и карточки ---
+//6. Каталог и Карточки (Grid + Flexbox)
 .catalog {
   &__title {
-    font-size: 24px;
+    font-size: 22px;
     margin-top: $spacing-lg;
     margin-bottom: $spacing-md;
     color: $color-primary;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: $spacing-lg;
   }
 }
 
@@ -169,13 +204,10 @@ img {
   background-color: $color-white;
   border: 1px solid $color-border;
   border-radius: 8px;
-  margin-bottom: $spacing-lg; // Чуть больше отступа между карточками
   overflow: hidden;
-
-  // ОГРАНИЧЕНИЕ ШИРИНЫ КАРТОЧЕК И ЦЕНТРИРОВАНИЕ:
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   &__image-wrapper {
     position: relative;
@@ -183,7 +215,7 @@ img {
 
   &__image {
     width: 100%;
-    height: 300px; // Сделал повыше для красивых пропорций
+    height: 200px;
   }
 
   &__badge {
@@ -199,38 +231,43 @@ img {
   }
 
   &__content {
-    padding: $spacing-md $spacing-lg; // Чуть больше отступы внутри
+    padding: $spacing-md;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
 
   &__title {
     margin: 0 0 $spacing-sm 0;
-    font-size: 24px; // Чуть крупнее заголовок
+    font-size: 20px;
   }
 
   &__desc {
     color: $color-gray;
     margin-bottom: $spacing-sm;
-    font-size: 16px;
+    font-size: 15px;
+    flex-grow: 1;
   }
 
   &__meta {
-    font-size: 14px;
+    font-size: 13px;
     color: $color-primary;
     font-weight: bold;
     margin-bottom: $spacing-md;
+    margin-top: auto;
   }
 
   &__link {
-    display: inline-block;
+    display: block;
     padding: $spacing-sm $spacing-md;
     background-color: $color-primary;
     color: $color-white;
     border-radius: 4px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+    transition: background-color 0.3s ease;
 
     &:hover {
       background-color: $color-primary-hover;
-      transform: translateY(-2px);
     }
 
     &:focus-visible {
@@ -240,53 +277,223 @@ img {
   }
 }
 
-// --- 6. Детальная страница ---
+//7. Детальная страница
 .detail {
   background-color: $color-white;
   padding: $spacing-lg;
   border: 1px solid $color-border;
   border-radius: 8px;
-
-  // ОГРАНИЧЕНИЕ ШИРИНЫ И ЦЕНТРИРОВАНИЕ:
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 900px;
+  margin: 0 auto;
 
   &__title {
     margin-top: 0;
     color: $color-primary;
   }
 
+  &__hero {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+  }
+
   &__image {
     width: 100%;
     max-height: 400px;
-    object-fit: cover;
     border-radius: 8px;
-    margin-bottom: $spacing-lg;
+  }
+
+  &__hero-content {
+    flex: 1;
   }
 
   &__section {
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-xl;
   }
 
   &__subtitle {
     border-bottom: 1px solid $color-border;
     padding-bottom: $spacing-xs;
-    margin-bottom: $spacing-sm;
+    margin-bottom: $spacing-md;
+  }
+
+  &__actions {
+    margin-top: $spacing-lg;
   }
 }
 
-// --- 7. Таблицы ---
+//8. Список эпизодов
+.episode-grid {
+  display: grid;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: $spacing-lg;
+
+  // Мобильная версия
+  &__header {
+    display: none;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "num btn"
+      "name name"
+      "date duration";
+    gap: $spacing-sm;
+    padding: $spacing-md;
+    background-color: $color-white;
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__num {
+    grid-area: num;
+    color: $color-gray;
+    font-size: 14px;
+  }
+
+  &__name {
+    grid-area: name;
+    font-weight: bold;
+    font-size: 16px;
+    color: $color-dark;
+  }
+
+  &__date {
+    grid-area: date;
+    color: $color-gray;
+    font-size: 14px;
+  }
+
+  &__duration {
+    grid-area: duration;
+    color: $color-gray;
+    font-size: 14px;
+    text-align: right;
+  }
+
+  &__btn {
+    grid-area: btn;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+    &:hover {
+      background-color: $color-primary-hover;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  // Планшеты и ПК
+  @media (min-width: 768px) {
+
+    display: grid;
+    grid-template-columns: 5% 45% 20% 15% 15%;
+    width: 100%;
+    background-color: $color-white;
+
+    &__header {
+      display: grid;
+      grid-template-columns: 5% 45% 20% 15% 15%;
+      background-color: $color-primary;
+      color: $color-white;
+      font-weight: bold;
+      font-size: 12px;
+      text-transform: uppercase;
+      text-align: center;
+      grid-column: 1 / -1;
+
+      span {
+        padding: $spacing-sm $spacing-xs;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+
+    &__row {
+      display: grid;
+      grid-template-columns: 5% 45% 20% 15% 15%;
+      grid-template-areas: none;
+      align-items: center;
+      padding: 0;
+      gap: 0;
+      grid-column: 1 / -1;
+
+      &:nth-child(odd) {
+        background-color: $color-white;
+      }
+
+      &:nth-child(even) {
+        background-color: $color-bg;
+      }
+
+      &:hover {
+        background-color: rgba($color-primary, 0.08);
+      }
+    }
+
+    &__num, &__name, &__date, &__duration, &__btn {
+      grid-area: auto;
+      padding: $spacing-sm $spacing-xs;
+      border-right: 1px solid $color-border;
+      text-align: left;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    &__name {
+      font-weight: normal;
+      font-size: 14px;
+    }
+
+    &__date, &__duration {
+      font-size: 13px;
+    }
+
+    &__btn {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+//9. Таблицы
 .table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: $spacing-lg;
   background-color: $color-white;
-
-  // Ограничиваем ширину таблиц (особенно для collection.html)
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
 
   &__caption {
     font-weight: bold;
@@ -306,17 +513,14 @@ img {
   }
 }
 
-// --- 8. Формы ---
+//10. Формы
 .form {
   background-color: $color-white;
   padding: $spacing-lg;
   border: 1px solid $color-border;
   border-radius: 8px;
-
-  // ОГРАНИЧЕНИЕ ШИРИНЫ И ЦЕНТРИРОВАНИЕ ФОРМЫ:
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 
   &__section {
     margin-bottom: $spacing-lg;
@@ -338,10 +542,11 @@ img {
 
   &__group {
     margin-bottom: $spacing-md;
+    display: flex;
+    flex-direction: column;
   }
 
   &__label {
-    display: block;
     margin-bottom: $spacing-xs;
     font-weight: bold;
 
@@ -377,14 +582,20 @@ img {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    width: 100%;
 
     &:hover {
       background-color: $color-primary-hover;
     }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
   }
 }
 
-// --- 9. Подвал ---
+//11. Подвал
 .footer {
   background-color: $color-white;
   border-top: 1px solid $color-border;
@@ -402,7 +613,7 @@ img {
   }
 }
 
-// --- 10. Мини-плеер ---
+//12. Мини-плеер
 .mini-player {
   position: fixed;
   bottom: 0;
@@ -413,11 +624,13 @@ img {
   padding: $spacing-md;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
 
   &__info {
-    display: inline-block;
-    width: 80%;
-    vertical-align: middle;
+    flex-grow: 1;
   }
 
   &__title {
@@ -425,20 +638,70 @@ img {
   }
 
   &__btn {
-    display: inline-block;
-    width: 18%;
     background-color: $color-primary;
     color: $color-white;
     border: none;
-    padding: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
     cursor: pointer;
     border-radius: 4px;
     font-size: 16px;
-    vertical-align: middle;
     transition: background-color 0.3s;
 
     &:hover {
       background-color: $color-primary-hover;
     }
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// МЕДИАЗАПРОСЫ (Mobile First)
+
+@media (min-width: 768px) {
+  .header {
+    &__container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .section__actions {
+    flex-direction: row;
+  }
+
+  // Выравнивание обложки и текста по верхнему краю
+  .detail__hero {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: $spacing-lg;
+
+    .detail__image {
+      width: 40%;
+      max-width: 350px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .detail__hero-content {
+      flex: 1;
+
+      h3 {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .form__submit {
+    width: auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .main {
+    padding: $spacing-xl $spacing-lg;
   }
 }

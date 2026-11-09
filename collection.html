@@ -6,7 +6,7 @@
     <title>Очередь прослушивания — EchoCast</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page">
 
     <header class="header">
         <div class="header__container">
@@ -28,95 +28,96 @@
         <h2 class="main__title">Очередь прослушивания</h2>
         <p class="main__desc">Эпизоды, которые вы сохранили для прослушивания. Сгруппированы по подкастам.</p>
 
-        <table class="table">
-            <caption class="table__caption">Моя очередь</caption>
-            <thead>
-                <tr>
-                    <th>Подкаст</th>
-                    <th>Название эпизода</th>
-                    <th>Дата выхода</th>
-                    <th>Длительность</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- «Мурчание в наушниках» — 3 эпизода -->
-                <tr>
-                    <td rowspan="3">«Мурчание в наушниках»</td>
-                    <td>Почему кот игнорирует новую лежанку</td>
-                    <td><time datetime="2024-05-15">15.05.2024</time></td>
-                    <td>48 мин</td>
-                </tr>
-                <tr>
-                    <td>Корм vs натуралка: без фанатизма</td>
-                    <td><time datetime="2024-05-08">08.05.2024</time></td>
-                    <td>55 мин</td>
-                </tr>
-                <tr>
-                    <td>Мурчание как терапия: что говорит наука</td>
-                    <td><time datetime="2024-05-01">01.05.2024</time></td>
-                    <td>47 мин</td>
-                </tr>
+        <!-- Добавил контейнер для скролла таблицы на мобильных -->
+        <div class="table-wrapper">
+            <table class="table">
+                <caption class="table__caption">Моя очередь</caption>
+                <thead>
+                    <tr>
+                        <th>Подкаст</th>
+                        <th>Название эпизода</th>
+                        <th>Дата выхода</th>
+                        <th>Длительность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- «Мурчание в наушниках» — 3 эпизода -->
+                    <tr>
+                        <td rowspan="3">«Мурчание в наушниках»</td>
+                        <td>Почему кот игнорирует новую лежанку</td>
+                        <td><time datetime="2024-05-15">15.05.2024</time></td>
+                        <td>48 мин</td>
+                    </tr>
+                    <tr>
+                        <td>Корм vs натуралка: без фанатизма</td>
+                        <td><time datetime="2024-05-08">08.05.2024</time></td>
+                        <td>55 мин</td>
+                    </tr>
+                    <tr>
+                        <td>Мурчание как терапия: что говорит наука</td>
+                        <td><time datetime="2024-05-01">01.05.2024</time></td>
+                        <td>47 мин</td>
+                    </tr>
 
-                <!-- «Пирокинезис: рэп-разбор» — 2 эпизода -->
-                <tr>
-                    <td rowspan="2">«Пирокинезис: рэп-разбор»</td>
-                    <td>Биты и флоу в ранних треках</td>
-                    <td><time datetime="2024-05-11">11.05.2024</time></td>
-                    <td>43 мин</td>
-                </tr>
-                <tr>
-                    <td>Как Пирокинезис переосмыслил классический рэп</td>
-                    <td><time datetime="2024-05-04">04.05.2024</time></td>
-                    <td>46 мин</td>
-                </tr>
+                    <!-- «Пирокинезис: рэп-разбор» — 2 эпизода -->
+                    <tr>
+                        <td rowspan="2">«Пирокинезис: рэп-разбор»</td>
+                        <td>Биты и флоу в ранних треках</td>
+                        <td><time datetime="2024-05-11">11.05.2024</time></td>
+                        <td>43 мин</td>
+                    </tr>
+                    <tr>
+                        <td>Как Пирокинезис переосмыслил классический рэп</td>
+                        <td><time datetime="2024-05-04">04.05.2024</time></td>
+                        <td>46 мин</td>
+                    </tr>
 
-                <!-- «Небо в 6:14» — 2 эпизода -->
-                <tr>
-                    <td rowspan="2">«Небо в 6:14»</td>
-                    <td>Как поймать рассвет в городе</td>
-                    <td><time datetime="2024-05-12">12.05.2024</time></td>
-                    <td>26 мин</td>
-                </tr>
-                <tr>
-                    <td>Закат на плёнку: советы фотографа</td>
-                    <td><time datetime="2024-05-05">05.05.2024</time></td>
-                    <td>31 мин</td>
-                </tr>
+                    <!-- «Небо в 6:14» — 2 эпизода -->
+                    <tr>
+                        <td rowspan="2">«Небо в 6:14»</td>
+                        <td>Как поймать рассвет в городе</td>
+                        <td><time datetime="2024-05-12">12.05.2024</time></td>
+                        <td>26 мин</td>
+                    </tr>
+                    <tr>
+                        <td>Закат на плёнку: советы фотографа</td>
+                        <td><time datetime="2024-05-05">05.05.2024</time></td>
+                        <td>31 мин</td>
+                    </tr>
 
-                <!-- «Алгоритм внимания» — 2 эпизода -->
-                <tr>
-                    <td rowspan="2">«Алгоритм внимания»</td>
-                    <td>Почему TikTok знает о вас больше друзей</td>
-                    <td><time datetime="2024-05-10">10.05.2024</time></td>
-                    <td>39 мин</td>
-                </tr>
-                <tr>
-                    <td>Как снимать видео, которые досматривают</td>
-                    <td><time datetime="2024-05-03">03.05.2024</time></td>
-                    <td>42 мин</td>
-                </tr>
+                    <!-- «Алгоритм внимания» — 2 эпизода -->
+                    <tr>
+                        <td rowspan="2">«Алгоритм внимания»</td>
+                        <td>Почему TikTok знает о вас больше друзей</td>
+                        <td><time datetime="2024-05-10">10.05.2024</time></td>
+                        <td>39 мин</td>
+                    </tr>
+                    <tr>
+                        <td>Как снимать видео, которые досматривают</td>
+                        <td><time datetime="2024-05-03">03.05.2024</time></td>
+                        <td>42 мин</td>
+                    </tr>
 
-                <!-- «Поступить и не сойти с ума» — 1 эпизод -->
-                <tr>
-                    <td>«Поступить и не сойти с ума»</td>
-                    <td>Как выбрать вуз, если ничего не нравится</td>
-                    <td><time datetime="2024-05-09">09.05.2024</time></td>
-                    <td>44 мин</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4">Всего в очереди: 10 эпизодов · Суммарная длительность: 7 ч 1 мин</td>
-                </tr>
-            </tfoot>
-        </table>
+                    <!-- «Поступить и не сойти с ума» — 1 эпизод -->
+                    <tr>
+                        <td>«Поступить и не сойти с ума»</td>
+                        <td>Как выбрать вуз, если ничего не нравится</td>
+                        <td><time datetime="2024-05-09">09.05.2024</time></td>
+                        <td>44 мин</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Всего в очереди: 10 эпизодов · Суммарная длительность: 7 ч 1 мин</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
 
-        <p class="section__text">
+        <div class="section__actions">
             <a href="checkout.html" class="btn">Купить подписку на дайджест</a>
-        </p>
-        <p class="section__text">
             <a href="catalog.html" class="btn btn_secondary">Добавить ещё подкасты</a>
-        </p>
+        </div>
     </main>
 
     <footer class="footer">
@@ -128,7 +129,7 @@
         <div class="mini-player__info">
             <span class="mini-player__title">Сейчас играет: Пирокинезис — Рэп-разбор</span>
         </div>
-        <button class="mini-player__btn">▶</button>
+        <button class="mini-player__btn" aria-label="Воспроизвести или поставить на паузу">▶</button>
     </div>
 
 </body>

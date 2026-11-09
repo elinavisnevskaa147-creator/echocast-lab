@@ -1,0 +1,4 @@
+temp_hide/
+node_modules/
+.sass-cache/
+.idea/

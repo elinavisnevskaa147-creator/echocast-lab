@@ -6,7 +6,7 @@
     <title>«Пирокинезис: рэп-разбор» — EchoCast</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page">
 
     <header class="header">
         <div class="header__container">
@@ -28,69 +28,68 @@
         <article class="detail">
             <h2 class="detail__title">«Пирокинезис: рэп-разбор»</h2>
 
-            <img src="img/pyro.jpg" alt="Иллюстрация к подкасту «Пирокинезис: рэп-разбор»" class="detail__image">
+            <!-- Flexbox для обложки и описания -->
+            <div class="detail__hero">
+                <img src="img/pyro.jpg" alt="Иллюстрация к подкасту «Пирокинезис: рэп-разбор»" class="detail__image">
+                <div class="detail__hero-content">
+                    <h3 class="detail__subtitle">Описание</h3>
+                    <p class="section__text">Подкаст, в котором ведущие разбирают творчество музыканта Пирокинезиса в контексте рэпа. Обсуждаем биты, тексты, флоу, влияние классиков жанра, эволюцию звучания от первых треков до последних альбомов, а также концертные выступления и необычные музыкальные решения.</p>
 
-            <section class="detail__section">
-                <h3 class="detail__subtitle">Описание</h3>
-                <p class="section__text">Подкаст, в котором ведущие разбирают творчество музыканта Пирокинезиса в контексте рэпа. Обсуждаем биты, тексты, флоу, влияние классиков жанра, эволюцию звучания от первых треков до последних альбомов, а также концертные выступления и необычные музыкальные решения.</p>
-            </section>
-
-            <section class="detail__section">
-                <h3 class="detail__subtitle">Ведущие</h3>
-                <ul class="list">
-                    <li class="list__item">Артём Волков — музыкальный журналист</li>
-                    <li class="list__item">Ксения Огнева — звукорежиссёр и фанат рэпа</li>
-                </ul>
-            </section>
-
-            <section class="detail__section">
-                <h3 class="detail__subtitle">Характеристики</h3>
-                <ul class="list">
-                    <li class="list__item">Всего эпизодов: 46</li>
-                    <li class="list__item">Средняя длительность: 44 минуты</li>
-                    <li class="list__item">Периодичность: раз в неделю</li>
-                    <li class="list__item">Язык: русский</li>
-                    <li class="list__item">Жанр: музыка, разбор творчества</li>
-                </ul>
-            </section>
+                    <ul class="list">
+                        <li class="list__item"><strong>Ведущие:</strong> Артём Волков, Ксения Огнева</li>
+                        <li class="list__item"><strong>Всего эпизодов:</strong> 46</li>
+                        <li class="list__item"><strong>Периодичность:</strong> раз в неделю</li>
+                        <li class="list__item"><strong>Жанр:</strong> музыка, разбор творчества</li>
+                    </ul>
+                </div>
+            </div>
 
             <section class="detail__section">
                 <h3 class="detail__subtitle">Последние эпизоды</h3>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>№</th>
-                            <th>Название эпизода</th>
-                            <th>Дата выхода</th>
-                            <th>Длительность</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>46</td>
-                            <td>Биты и флоу в ранних треках Пирокинезиса</td>
-                            <td><time datetime="2024-05-11">11 мая 2024</time></td>
-                            <td>43 мин</td>
-                        </tr>
-                        <tr>
-                            <td>45</td>
-                            <td>Как Пирокинезис переосмыслил классический рэп</td>
-                            <td><time datetime="2024-05-04">4 мая 2024</time></td>
-                            <td>46 мин</td>
-                        </tr>
-                        <tr>
-                            <td>44</td>
-                            <td>Концертные выступления: энергия на сцене</td>
-                            <td><time datetime="2024-04-27">27 апреля 2024</time></td>
-                            <td>48 мин</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <!-- Специфика 18: Список эпизодов через CSS Grid -->
+                <div class="episode-grid">
+                    <!-- Шапка для ПК -->
+                    <div class="episode-grid__header">
+                        <span>№</span>
+                        <span>Название</span>
+                        <span>Дата</span>
+                        <span>Время</span>
+                        <span>Действие</span>
+                    </div>
+
+                    <!-- Строка 1 -->
+                    <div class="episode-grid__row">
+                        <span class="episode-grid__num">46</span>
+                        <span class="episode-grid__name">Биты и флоу в ранних треках Пирокинезиса</span>
+                        <span class="episode-grid__date"><time datetime="2024-05-11">11.05.2024</time></span>
+                        <span class="episode-grid__duration">43 мин</span>
+                        <button class="episode-grid__btn" aria-label="Слушать эпизод 46">▶</button>
+                    </div>
+
+                    <!-- Строка 2 -->
+                    <div class="episode-grid__row">
+                        <span class="episode-grid__num">45</span>
+                        <span class="episode-grid__name">Как Пирокинезис переосмыслил классический рэп</span>
+                        <span class="episode-grid__date"><time datetime="2024-05-04">04.05.2024</time></span>
+                        <span class="episode-grid__duration">46 мин</span>
+                        <button class="episode-grid__btn" aria-label="Слушать эпизод 45">▶</button>
+                    </div>
+
+                    <!-- Строка 3 -->
+                    <div class="episode-grid__row">
+                        <span class="episode-grid__num">44</span>
+                        <span class="episode-grid__name">Концертные выступления: энергия на сцене</span>
+                        <span class="episode-grid__date"><time datetime="2024-04-27">27.04.2024</time></span>
+                        <span class="episode-grid__duration">48 мин</span>
+                        <button class="episode-grid__btn" aria-label="Слушать эпизод 44">▶</button>
+                    </div>
+                </div>
             </section>
 
-            <p class="section__text">
+            <div class="detail__actions">
                 <a href="collection.html" class="btn">Добавить эпизоды в очередь прослушивания</a>
-            </p>
+            </div>
         </article>
     </main>
 
@@ -103,7 +102,7 @@
         <div class="mini-player__info">
             <span class="mini-player__title">Сейчас играет: Пирокинезис — Рэп-разбор</span>
         </div>
-        <button class="mini-player__btn">▶</button>
+        <button class="mini-player__btn" aria-label="Воспроизвести или поставить на паузу">▶</button>
     </div>
 
 </body>

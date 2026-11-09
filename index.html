@@ -6,7 +6,7 @@
     <title>EchoCast — Каталог подкастов</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page">
 
     <header class="header">
         <div class="header__container">
@@ -42,12 +42,10 @@
 
         <section class="section">
             <h2 class="section__title">С чего начать</h2>
-            <p class="section__text">
+            <div class="section__actions">
                 <a href="catalog.html" class="btn">Открыть каталог подкастов</a>
-            </p>
-            <p class="section__text">
                 <a href="checkout.html" class="btn btn_secondary">Оформить подписку на дайджест</a>
-            </p>
+            </div>
         </section>
     </main>
 
@@ -60,7 +58,7 @@
         <div class="mini-player__info">
             <span class="mini-player__title">Сейчас играет: Пирокинезис — Рэп-разбор</span>
         </div>
-        <button class="mini-player__btn">▶</button>
+        <button class="mini-player__btn" aria-label="Воспроизвести или поставить на паузу">▶</button>
     </div>
 
 </body>

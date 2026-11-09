@@ -6,7 +6,7 @@
     <title>Купить подписку — EchoCast</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page">
 
     <header class="header">
         <div class="header__container">
@@ -52,13 +52,17 @@
                 <h3 class="form__section-title">Частота получения дайджеста</h3>
 
                 <div class="form__group">
-                    <input type="radio" id="freq-daily" name="frequency" value="daily" checked>
-                    <label for="freq-daily" class="form__label form__label_inline">Ежедневно</label>
+                    <label class="form__label form__label_inline">
+                        <input type="radio" id="freq-daily" name="frequency" value="daily" checked>
+                        Ежедневно
+                    </label>
                 </div>
 
                 <div class="form__group">
-                    <input type="radio" id="freq-weekly" name="frequency" value="weekly">
-                    <label for="freq-weekly" class="form__label form__label_inline">Раз в неделю</label>
+                    <label class="form__label form__label_inline">
+                        <input type="radio" id="freq-weekly" name="frequency" value="weekly">
+                        Раз в неделю
+                    </label>
                 </div>
             </section>
 
@@ -67,33 +71,40 @@
                 <p class="form__desc">Отметьте все, что вам интересно:</p>
 
                 <div class="form__group">
-                    <input type="checkbox" id="cat-admission" name="categories" value="admission">
-                    <label for="cat-admission" class="form__label form__label_inline">Поступление и учёба</label>
+                    <label class="form__label form__label_inline">
+                        <input type="checkbox" name="categories" value="admission">
+                        Поступление и учёба
+                    </label>
                 </div>
-
                 <div class="form__group">
-                    <input type="checkbox" id="cat-cats" name="categories" value="cats">
-                    <label for="cat-cats" class="form__label form__label_inline">Котики и питомцы</label>
+                    <label class="form__label form__label_inline">
+                        <input type="checkbox" name="categories" value="cats">
+                        Котики и питомцы
+                    </label>
                 </div>
-
                 <div class="form__group">
-                    <input type="checkbox" id="cat-sky" name="categories" value="sky">
-                    <label for="cat-sky" class="form__label form__label_inline">Рассветы и закаты</label>
+                    <label class="form__label form__label_inline">
+                        <input type="checkbox" name="categories" value="sky">
+                        Рассветы и закаты
+                    </label>
                 </div>
-
                 <div class="form__group">
-                    <input type="checkbox" id="cat-groceries" name="categories" value="groceries">
-                    <label for="cat-groceries" class="form__label form__label_inline">Закупки в магазине</label>
+                    <label class="form__label form__label_inline">
+                        <input type="checkbox" name="categories" value="groceries">
+                        Закупки в магазине
+                    </label>
                 </div>
-
                 <div class="form__group">
-                    <input type="checkbox" id="cat-pyro" name="categories" value="pyro">
-                    <label for="cat-pyro" class="form__label form__label_inline">Разбор творчества Пирокинезиса</label>
+                    <label class="form__label form__label_inline">
+                        <input type="checkbox" name="categories" value="pyro">
+                        Разбор творчества Пирокинезиса
+                    </label>
                 </div>
-
                 <div class="form__group">
-                    <input type="checkbox" id="cat-tiktok" name="categories" value="tiktok">
-                    <label for="cat-tiktok" class="form__label form__label_inline">TikTok и алгоритмы</label>
+                    <label class="form__label form__label_inline">
+                        <input type="checkbox" name="categories" value="tiktok">
+                        TikTok и алгоритмы
+                    </label>
                 </div>
             </section>
 
@@ -107,12 +118,14 @@
 
                 <div class="form__group">
                     <label for="comment" class="form__label">Комментарий:</label>
-                    <textarea id="comment" name="comment" class="form__input" rows="4" maxlength="500" placeholder="Например: хочу больше эпизодов про котиков и Пирокинезиса"></textarea>
+                    <textarea id="comment" name="comment" class="form__input" rows="4" maxlength="500" placeholder="Например: хочу больше эпизодов про котиков"></textarea>
                 </div>
 
                 <div class="form__group">
-                    <input type="checkbox" id="agreement" name="agreement" required>
-                    <label for="agreement" class="form__label form__label_inline">Я согласен с обработкой персональных данных и получением писем</label>
+                    <label class="form__label form__label_inline">
+                        <input type="checkbox" name="agreement" required>
+                        Я согласен с обработкой персональных данных
+                    </label>
                 </div>
             </section>
 
@@ -129,7 +142,7 @@
         <div class="mini-player__info">
             <span class="mini-player__title">Сейчас играет: Пирокинезис — Рэп-разбор</span>
         </div>
-        <button class="mini-player__btn">▶</button>
+        <button class="mini-player__btn" aria-label="Воспроизвести или поставить на паузу">▶</button>
     </div>
 
 </body>
