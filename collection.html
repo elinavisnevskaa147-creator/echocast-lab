@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Очередь прослушивания — EchoCast</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
+    <script type="module" src="/src/main.js"></script>
 </head>
 <body class="page">
 
@@ -45,13 +44,11 @@
                 <tbody id="queue"></tbody>
                 <tfoot>
                     <tr>
-                        <td id="queue-summary" colspan="5"></td>
+                        <td id="queue-summary" role="status" colspan="5"></td>
                     </tr>
                 </tfoot>
             </table>
         </div>
-
-        <p id="subscription-status" hidden></p>
 
         <div class="section__actions">
             <a href="checkout.html" class="btn">Оформить подписку на дайджест</a>
