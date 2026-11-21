@@ -29,7 +29,7 @@
         <h2 class="main__title">Купить подписку</h2>
         <p class="main__desc">Получайте подборку новых эпизодов по вашим интересам.</p>
 
-        <form action="/subscribe" method="POST" class="form">
+        <form id="subscription-form" class="form">
             <section class="form__section">
                 <h3 class="form__section-title">Контактные данные</h3>
 
@@ -130,7 +130,8 @@
                 </div>
             </section>
 
-            <button type="submit" class="form__submit">Купить подписку</button>
+            <button type="submit" class="form__submit">Оформить подписку</button>
+            <p id="subscription-feedback" role="status"></p>
         </form>
     </main>
 

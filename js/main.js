@@ -77,6 +77,11 @@ class Episode {
             link
         );
 
+        const queued = queue.includes(this.id);
+        const button = createActionButton(queued ? "В очереди" : "Слушать позже", "enqueue", this.id);
+        button.setAttribute("aria-disabled", String(queued));
+        content.append(button);
+
         card.append(imageWrapper, content);
 
         return card;
@@ -84,7 +89,7 @@ class Episode {
 }
 
 // 5. Массив исходных данных
-const episodes = [
+const defaultEpisodes = [
     {
         id: 1,
         podcast: "Поступить и не сойти с ума",
@@ -282,7 +287,95 @@ const episodes = [
     }
 ];
 
-// 6. Поиск контейнеров каталога
+const storageKeys = {
+    queue: "echocast.queue",
+    subscriptions: "echocast.subscriptions"
+};
+
+function readArray(key) {
+    try {
+        const value = JSON.parse(localStorage.getItem(key));
+        return Array.isArray(value) ? value : [];
+    } catch {
+        return [];
+    }
+}
+
+function saveArray(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+const episodes = defaultEpisodes;
+let queue = readArray(storageKeys.queue);
+const subscriptions = readArray(storageKeys.subscriptions);
+
+function createActionButton(label, action, id) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "btn btn_secondary";
+    button.dataset.action = action;
+    button.dataset.id = id;
+    button.textContent = label;
+    return button;
+}
+
+const subscriptionForm = document.querySelector("#subscription-form");
+const subscriptionFeedback = document.querySelector("#subscription-feedback");
+
+subscriptionForm?.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const fields = new FormData(subscriptionForm);
+    const name = fields.get("subscriber_name").trim();
+
+    if (name.length < 2) {
+        subscriptionFeedback.textContent = "Введите имя длиной хотя бы два символа.";
+        return;
+    }
+
+    const subscription = {
+        name,
+        email: fields.get("email").trim().toLowerCase(),
+        startDate: fields.get("start_date"),
+        frequency: fields.get("frequency"),
+        categories: fields.getAll("categories"),
+        digestSize: Number(fields.get("digest_size")),
+        comment: fields.get("comment").trim(),
+        agreed: fields.has("agreement"),
+        status: "subscribed"
+    };
+
+    const updatedSubscriptions = readArray(storageKeys.subscriptions)
+        .filter(item => item.email !== subscription.email);
+    updatedSubscriptions.push(subscription);
+
+    if (saveArray(storageKeys.subscriptions, updatedSubscriptions)) {
+        subscriptionFeedback.textContent = "Подписка на дайджест сохранена.";
+        subscriptionForm.reset();
+    } else {
+        subscriptionFeedback.textContent = "Не удалось сохранить подписку в браузере.";
+    }
+});
+
+const subscriptionStatus = document.querySelector("#subscription-status");
+const latestSubscription = subscriptions.at(-1);
+
+if (subscriptionStatus && latestSubscription?.status === "subscribed") {
+    subscriptionStatus.hidden = false;
+    subscriptionStatus.textContent = `Подписка на дайджест оформлена для ${latestSubscription.email}.`;
+}
+
+const catalog = document.querySelector(".catalog");
+const catalogFeedback = document.querySelector("#catalog-feedback");
+const queueContainer = document.querySelector("#queue");
+const queueSummary = document.querySelector("#queue-summary");
+
+// Контейнеры каталога
 const lifeContainer = document.querySelector("#catalog-life");
 const cozyContainer = document.querySelector("#catalog-cozy");
 const musicContainer = document.querySelector("#catalog-music");
@@ -299,6 +392,8 @@ const renderCatalog = () => {
         "Музыка и алгоритмы": musicContainer
     };
 
+    Object.values(containers).forEach(container => container.replaceChildren());
+
     episodes.forEach(data => {
         const episode = new Episode(data);
         const container = containers[episode.category];
@@ -311,7 +406,90 @@ const renderCatalog = () => {
     console.log("Количество созданных карточек:", episodes.length);
 };
 
+function renderQueue() {
+    if (!queueContainer) {
+        return;
+    }
+
+    queueContainer.replaceChildren();
+    const episodeById = new Map(episodes.map(episode => [episode.id, episode]));
+    const queuedEpisodes = queue.map(id => episodeById.get(id)).filter(Boolean);
+
+    for (const episode of queuedEpisodes) {
+        const row = queueContainer.insertRow();
+        row.insertCell().textContent = `«${episode.podcast}»`;
+        row.insertCell().textContent = episode.topic;
+        const date = document.createElement("time");
+        date.dateTime = episode.date;
+        date.textContent = episode.date.split("-").reverse().join(".");
+        row.insertCell().append(date);
+        row.insertCell().textContent = `${episode.duration} мин`;
+        const button = createActionButton("Удалить", "remove", episode.id);
+        button.setAttribute("aria-label", `Удалить: ${episode.podcast}, ${episode.topic}`);
+        row.insertCell().append(button);
+    }
+
+    const duration = queuedEpisodes.reduce((sum, episode) => sum + episode.duration, 0);
+    queueSummary.textContent = queuedEpisodes.length
+        ? `Всего в очереди: ${queuedEpisodes.length} · Суммарная длительность: ${duration} мин`
+        : "В очереди пока нет эпизодов.";
+}
+
+catalog?.addEventListener("click", event => {
+    const button = event.target.closest('button[data-action="enqueue"]');
+
+    if (!button || !catalog.contains(button)) {
+        return;
+    }
+
+    const id = Number(button.dataset.id);
+    queue = readArray(storageKeys.queue);
+
+    if (queue.includes(id)) {
+        return;
+    }
+
+    const updatedQueue = [...queue, id];
+    if (!saveArray(storageKeys.queue, updatedQueue)) {
+        catalogFeedback.textContent = "Не удалось сохранить очередь в браузере.";
+        return;
+    }
+
+    queue = updatedQueue;
+    button.textContent = "В очереди";
+    button.setAttribute("aria-disabled", "true");
+    catalogFeedback.textContent = "Эпизод добавлен в очередь.";
+});
+
+queueContainer?.addEventListener("click", event => {
+    const button = event.target.closest('button[data-action="remove"]');
+
+    if (!button || !queueContainer.contains(button)) {
+        return;
+    }
+
+    const id = Number(button.dataset.id);
+    const updatedQueue = readArray(storageKeys.queue).filter(queuedId => queuedId !== id);
+
+    if (!saveArray(storageKeys.queue, updatedQueue)) {
+        queueSummary.textContent = "Не удалось сохранить очередь в браузере.";
+        return;
+    }
+
+    queue = updatedQueue;
+    renderQueue();
+});
+
+window.addEventListener("pageshow", event => {
+    if (event.persisted) {
+        queue = readArray(storageKeys.queue);
+        renderCatalog();
+        renderQueue();
+    }
+});
+
 renderCatalog();
+renderQueue();
 
 // 8. Аналитика по варианту 18
 const analyzeEpisodes = () => {
