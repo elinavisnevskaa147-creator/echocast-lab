@@ -8,14 +8,6 @@ async function request(path, options) {
     return await response.json();
 }
 
-export async function getEpisodes() {
-    const episodes = await request("/episodes?_sort=-isNew");
-    if (!Array.isArray(episodes)) {
-        throw new Error("Ожидался массив эпизодов");
-    }
-    return episodes;
-}
-
 export async function createSubscription(subscription) {
     return await request("/subscriptions", {
         method: "POST",

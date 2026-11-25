@@ -7,66 +7,6 @@
     <script type="module" src="/src/main.js"></script>
 </head>
 <body class="page">
-
-    <header class="header">
-        <div class="header__container">
-            <h1 class="header__logo">EchoCast</h1>
-            <p class="header__subtitle">Каталог подкастов обо всём, что звучит в вашей голове</p>
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
-                    <li class="nav__item"><a href="catalog.html" class="nav__link">Каталог</a></li>
-                    <li class="nav__item"><a href="detail.html" class="nav__link">О подкасте</a></li>
-                    <li class="nav__item"><a href="collection.html" class="nav__link nav__link_active">Очередь прослушивания</a></li>
-                    <li class="nav__item"><a href="checkout.html" class="nav__link">Купить подписку</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main class="main">
-        <h2 class="main__title">Очередь прослушивания</h2>
-        <p class="main__desc">Эпизоды, которые вы сохранили для прослушивания.</p>
-
-        <!-- Добавил контейнер для скролла таблицы на мобильных -->
-        <div class="table-wrapper">
-            <table class="table">
-                <caption class="table__caption">Моя очередь</caption>
-                <thead>
-                    <tr>
-                        <th>Подкаст</th>
-                        <th>Название эпизода</th>
-                        <th>Дата выхода</th>
-                        <th>Длительность</th>
-                        <th>Действие</th>
-                    </tr>
-                </thead>
-                <tbody id="queue"></tbody>
-                <tfoot>
-                    <tr>
-                        <td id="queue-summary" role="status" colspan="5"></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-
-        <div class="section__actions">
-            <a href="checkout.html" class="btn">Оформить подписку на дайджест</a>
-            <a href="catalog.html" class="btn btn_secondary">Добавить ещё подкасты</a>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <p class="footer__text">&copy; 2024 EchoCast. Все права защищены.</p>
-        <p class="footer__text">Связь: <a href="mailto:hello@echocast.example" class="footer__link">hello@echocast.example</a></p>
-    </footer>
-
-    <div class="mini-player">
-        <div class="mini-player__info">
-            <span class="mini-player__title">Сейчас играет: Пирокинезис — Рэп-разбор</span>
-        </div>
-        <button class="mini-player__btn" aria-label="Воспроизвести или поставить на паузу">▶</button>
-    </div>
-
+    <div id="app"></div>
 </body>
 </html>

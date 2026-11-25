@@ -7,55 +7,6 @@
     <script type="module" src="/src/main.js"></script>
 </head>
 <body class="page">
-
-    <header class="header">
-        <div class="header__container">
-            <h1 class="header__logo">EchoCast</h1>
-            <p class="header__subtitle">Каталог подкастов обо всём, что звучит в вашей голове</p>
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
-                    <li class="nav__item"><a href="catalog.html" class="nav__link nav__link_active">Каталог</a></li>
-                    <li class="nav__item"><a href="detail.html" class="nav__link">О подкасте</a></li>
-                    <li class="nav__item"><a href="collection.html" class="nav__link">Очередь прослушивания</a></li>
-                    <li class="nav__item"><a href="checkout.html" class="nav__link">Купить подписку</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main class="main">
-        <h2 class="main__title">Каталог подкастов</h2>
-        <p class="main__desc">
-            Выберите шоу, чтобы узнать подробности
-            и добавить эпизоды в очередь.
-        </p>
-
-        <p id="catalog-feedback" role="status"></p>
-
-        <section class="catalog">
-            <h3 class="catalog__title">Жизнь и быт</h3>
-            <div class="catalog__grid" id="catalog-life"></div>
-
-            <h3 class="catalog__title">Уютное и красивое</h3>
-            <div class="catalog__grid" id="catalog-cozy"></div>
-
-            <h3 class="catalog__title">Музыка и алгоритмы</h3>
-            <div class="catalog__grid" id="catalog-music"></div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p class="footer__text">&copy; 2024 EchoCast. Все права защищены.</p>
-        <p class="footer__text">Связь: <a href="mailto:hello@echocast.example" class="footer__link">hello@echocast.example</a></p>
-    </footer>
-
-    <div class="mini-player">
-        <div class="mini-player__info">
-            <span class="mini-player__title">Сейчас играет: Пирокинезис — Рэп-разбор</span>
-        </div>
-        <button class="mini-player__btn" aria-label="Воспроизвести или поставить на паузу">▶</button>
-    </div>
-
+    <div id="app"></div>
 </body>
 </html>

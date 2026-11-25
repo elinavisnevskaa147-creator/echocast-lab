@@ -1,4 +1,5 @@
 temp_hide/
 node_modules/
 .sass-cache/
-.idea/dist/
+.idea/
+dist/
